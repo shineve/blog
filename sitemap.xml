@@ -29,9 +29,18 @@
   </url>
   
   <url>
+    <loc>http://blog.shineve.dev/github-and-jira-automation/</loc>
+    
+    <lastmod>2020-12-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.shineve.dev/how-vue-css-scoped-works/</loc>
     
-    <lastmod>2021-10-29</lastmod>
+    <lastmod>2021-10-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -47,9 +56,9 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/github-and-jira-automation/</loc>
+    <loc>http://blog.shineve.dev/random-and-pseudo-random/</loc>
     
-    <lastmod>2020-12-13</lastmod>
+    <lastmod>2021-10-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +103,7 @@
 
   <url>
     <loc>http://blog.shineve.dev/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,77 +111,84 @@
   
   <url>
     <loc>http://blog.shineve.dev/tags/JavaScript/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Web-Development/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS-Postprocessor/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/PostCSS/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS-Preprocessor/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Sass/</loc>
-    <lastmod>2021-11-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.shineve.dev/tags/HTML/</loc>
-    <lastmod>2021-11-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.shineve.dev/tags/Vue/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/GitHub/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Jira/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/tags/HTML/</loc>
+    <lastmod>2021-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/tags/Vue/</loc>
+    <lastmod>2021-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/tags/Product-Design/</loc>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -181,14 +197,14 @@
   
   <url>
     <loc>http://blog.shineve.dev/categories/Front-End/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/categories/Project-Management/</loc>
-    <lastmod>2021-11-02</lastmod>
+    <lastmod>2021-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
