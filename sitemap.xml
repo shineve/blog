@@ -83,15 +83,6 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/script-tag-async-and-defer/</loc>
-    
-    <lastmod>2021-04-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.shineve.dev/web-share-api/</loc>
     
     <lastmod>2021-03-26</lastmod>
@@ -100,10 +91,19 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://blog.shineve.dev/script-tag-async-and-defer/</loc>
+    
+    <lastmod>2021-04-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>http://blog.shineve.dev/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,84 +111,84 @@
   
   <url>
     <loc>http://blog.shineve.dev/tags/JavaScript/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Web-Development/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS-Postprocessor/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/PostCSS/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/CSS-Preprocessor/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Sass/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/GitHub/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Jira/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/HTML/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Vue/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/tags/Product-Design/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -197,14 +197,14 @@
   
   <url>
     <loc>http://blog.shineve.dev/categories/Front-End/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://blog.shineve.dev/categories/Project-Management/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
