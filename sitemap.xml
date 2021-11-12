@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/css-postprocessor/</loc>
+    <loc>http://blog.shineve.dev/css-preprocessor/</loc>
     
     <lastmod>2021-10-02</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/css-preprocessor/</loc>
+    <loc>http://blog.shineve.dev/css-postprocessor/</loc>
     
     <lastmod>2021-10-02</lastmod>
     
@@ -65,15 +65,6 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/random-and-pseudo-random/</loc>
-    
-    <lastmod>2021-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.shineve.dev/resource-hints-preconnect-dns-prefetch/</loc>
     
     <lastmod>2021-06-09</lastmod>
@@ -86,6 +77,15 @@
     <loc>http://blog.shineve.dev/resource-hints-preload-prefetch/</loc>
     
     <lastmod>2021-05-31</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/random-and-pseudo-random/</loc>
+    
+    <lastmod>2021-10-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -147,20 +147,6 @@
   </url>
   
   <url>
-    <loc>http://blog.shineve.dev/tags/CSS-Postprocessor/</loc>
-    <lastmod>2021-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.shineve.dev/tags/PostCSS/</loc>
-    <lastmod>2021-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.shineve.dev/tags/CSS-Preprocessor/</loc>
     <lastmod>2021-11-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -169,6 +155,20 @@
   
   <url>
     <loc>http://blog.shineve.dev/tags/Sass/</loc>
+    <lastmod>2021-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/tags/CSS-Postprocessor/</loc>
+    <lastmod>2021-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.shineve.dev/tags/PostCSS/</loc>
     <lastmod>2021-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
