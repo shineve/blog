@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>什麼是 Cookie？Web Storage 又是什麼？ - shineve&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="shineve&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="shineve&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="我們可以在 Developer Tools 的 Application 面板下看到瀏覽器的本地存儲包含了：Cookie、Session Storage 和 Local Storage。  Cookie 是什麼Cookie 是伺服器傳送給瀏覽器的一小段資料，瀏覽器可以將其保存並在下一次請求時將 Cookie 傳給相同的伺服器。Cookie 最常見的用途之一是認證身份，例如登入狀態、購物車等，也被應用"><meta property="og:type" content="blog"><meta property="og:title" content="什麼是 Cookie？Web Storage 又是什麼？"><meta property="og:url" content="http://blog.shineve.dev/cookie-and-browser-storage/"><meta property="og:site_name" content="shineve&#039;s Blog"><meta property="og:description" content="我們可以在 Developer Tools 的 Application 面板下看到瀏覽器的本地存儲包含了：Cookie、Session Storage 和 Local Storage。  Cookie 是什麼Cookie 是伺服器傳送給瀏覽器的一小段資料，瀏覽器可以將其保存並在下一次請求時將 Cookie 傳給相同的伺服器。Cookie 最常見的用途之一是認證身份，例如登入狀態、購物車等，也被應用"><meta property="og:locale" content="zh_TW"><meta property="og:image" content="http://blog.shineve.dev/cookie-and-browser-storage/storage.png"><meta property="article:published_time" content="2021-11-11T14:13:28.000Z"><meta property="article:author" content="shineve"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Browser"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/cookie-and-browser-storage/storage.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.shineve.dev/cookie-and-browser-storage/"},"headline":"什麼是 Cookie？Web Storage 又是什麼？","image":["http://blog.shineve.dev/cookie-and-browser-storage/storage.png"],"datePublished":"2021-11-11T14:13:28.000Z","author":{"@type":"Person","name":"shineve"},"publisher":{"@type":"Organization","name":"shineve's Blog","logo":{"@type":"ImageObject","url":"http://blog.shineve.dev/img/logo.svg"}},"description":"我們可以在 Developer Tools 的 Application 面板下看到瀏覽器的本地存儲包含了：Cookie、Session Storage 和 Local Storage。  Cookie 是什麼Cookie 是伺服器傳送給瀏覽器的一小段資料，瀏覽器可以將其保存並在下一次請求時將 Cookie 傳給相同的伺服器。Cookie 最常見的用途之一是認證身份，例如登入狀態、購物車等，也被應用"}</script><link rel="canonical" href="http://blog.shineve.dev/cookie-and-browser-storage/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&amp;family=Noto+Sans+SC:wght@400;700"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-TCLVEN66J8" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-TCLVEN66J8');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="shineve&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;" rel="external nofollow noreferrer"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-11T14:13:28.000Z" title="11/11/2021, 10:13:28 PM">11-11-2021</time></span><span class="level-item"><a class="link-muted" href="/categories/Front-End/">Front-End</a></span><span class="level-item">11 分鐘 read (About 1669 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">什麼是 Cookie？Web Storage 又是什麼？</h1><div class="content"><p>我們可以在 <code>Developer Tools</code> 的 <code>Application</code> 面板下看到瀏覽器的本地存儲包含了：<code>Cookie</code>、<code>Session Storage</code> 和 <code>Local Storage</code>。</p>
+<p><img src="/cookie-and-browser-storage/storage.png" alt="Browser Storage"></p>
+<h2 id="Cookie-是什麼"><a href="#Cookie-是什麼" class="headerlink" title="Cookie 是什麼"></a><strong>Cookie 是什麼</strong></h2><p><code>Cookie</code> 是伺服器傳送給瀏覽器的一小段資料，瀏覽器可以將其保存並在下一次請求時將 <code>Cookie</code> 傳給相同的伺服器。<code>Cookie</code> 最常見的用途之一是認證身份，例如登入狀態、購物車等，也被應用於追蹤使用者及廣告上。</p>
+<h2 id="Cookie-是如何工作的"><a href="#Cookie-是如何工作的" class="headerlink" title="Cookie 是如何工作的"></a><strong>Cookie 是如何工作的</strong></h2><p><code>Cookie</code> 通常是由伺服器生成的，然後通過 <code>Response Header</code> 的 <code>Set-Cookie</code> 發送給客戶端瀏覽器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: my_cookie=bulandent</span><br></pre></td></tr></table></figure>
+
+<p>當瀏覽器接收到 <code>Set-Cookie header</code>，便會將 <code>Cookie</code> 保存起來，並且在下一次請求時將 <code>Cookie</code> 附在 <code>Request Header</code> 發送給伺服器，這樣伺服器就可以讀取 <code>Cookie</code> 中的資料。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /home.html HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br><span class="line">Cookie: my_cookie=bulandent</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="Cookie-分類"><a href="#Cookie-分類" class="headerlink" title="Cookie 分類"></a><strong>Cookie 分類</strong></h2><p>按照 <code>Cookie</code> 的生命週期可以將它分爲兩類：</p>
+<ul>
+<li><code>Session Cookie</code>：沒有指定過期時間 （<code>Expires</code>）或有效期（<code>Max-Age</code>）的 <code>Cookie</code>，<code>Session Cookie</code> 會被保存在瀏覽器的內存中，因此當瀏覽器關閉後會被自動刪除。</li>
+<li><code>Persistent cookie</code>：通過指定過期時間 （<code>Expires</code>）或有效期（<code>Max-Age</code>）的一種 <code>Cookie</code>，<code>Persistent cookie</code>被保存在客戶端的硬碟中。</li>
+</ul>
+<h2 id="Cookie-限制"><a href="#Cookie-限制" class="headerlink" title="Cookie 限制"></a><strong>Cookie 限制</strong></h2><p><code>Cookie</code> 會綁定特定的域名（<code>Domain</code>），除此之外，它還有如下一些限制：</p>
+<p>通常，只要遵守以下大致的限制，就不會在任何瀏覽器中碰到問題：</p>
+<ul>
+<li>不超過 300 個 <code>Cookie</code>；</li>
+<li>每個 <code>Cookie</code> 不超過 4KB；</li>
+<li>每個域名下不超過 20 個 <code>Cookie</code>。</li>
+</ul>
+<p>每個域能設置的 <code>Cookie</code> 總數也是有數量上限的，但不同瀏覽器的限制也會有些不同。例如：</p>
+<ul>
+<li>Safari 和 Chrome 對每個域的 <code>Cookie</code> 數沒有硬性限制。</li>
+<li>最新版 IE 和 Edge 限制每個域不超過 50 個 <code>Cookie</code>；</li>
+<li>最新版 Firefox 限制每個域不超過 150 個 <code>Cookie</code>；</li>
+</ul>
+<p>如果 <code>Cookie</code> 總數超過了單域名的上限，瀏覽器就會刪除之前設置的 <code>Cookie</code>，而刪除的邏輯不同瀏覽器也會不同。</p>
+<h2 id="Cookie-構成"><a href="#Cookie-構成" class="headerlink" title="Cookie 構成"></a><strong>Cookie 構成</strong></h2><blockquote>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/shineve/Study-Notes/tree/main/book-club/cookie-and-browser-storage">伺服器 Demo 代碼</a></p>
+</blockquote>
+<p><code>Cookie</code> 構成除了以上提到的 <code>Name</code>、<code>Value</code>、<code>Domain</code>、<code>Expires/Max-Age</code> 外，還有幾個比較重要的需要說下：</p>
+<ul>
+<li><code>Path</code>：請求 <code>URL</code> 中包含這個路徑，瀏覽器才會把 <code>Cookie</code> 夾帶到 <code>Request Header</code> 並發送到伺服器。</li>
+<li><code>Secure</code>：只有 <code>HTTPS</code> 請求才會夾帶標記爲 <code>Secure</code> 的 <code>Cookie</code>，如果是 <code>HTTP</code> 則不夾帶（localhost除外）。</li>
+<li><code>HttpOnly</code>：當 <code>Cookie</code> 被設定為 <code>HttpOnly</code>，客戶端無法透過 <code>document.cookie</code> 讀取該 <code>Cookie</code>。</li>
+<li><code>SameSite</code>：控制 <code>Cookie</code> 在跨站請求的時候是否會被發送，有 3 個值：<ul>
+<li><code>None</code> 允許跨站請求發送。</li>
+<li><code>Lax</code>：允許跨站 <code>GET</code> 請求發送。</li>
+<li><code>Strict</code>：不允許跨站請求發送。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>除了伺服器能夠設置 <code>Cookie</code> 外，客戶端也可以通過 <code>document.cookie</code> 設置。</p>
+</blockquote>
+<h2 id="Cookie-缺陷"><a href="#Cookie-缺陷" class="headerlink" title="Cookie 缺陷"></a><strong>Cookie 缺陷</strong></h2><ul>
+<li><code>Cookie</code> 會被附加在每個 <code>HTTP</code> 請求中，所以無形中增加了流量。</li>
+<li>由於在 <code>HTTP</code> 請求中的 <code>Cookie</code> 是明文傳遞的，所以安全性成問題，除非使用 <code>HTTPS</code>。</li>
+<li><code>Cookie</code> 的大小限制在 <code>4KB</code> 左右，對於複雜的存儲需求來說是不夠用的。</li>
+</ul>
+<h2 id="Cookie-安全"><a href="#Cookie-安全" class="headerlink" title="Cookie 安全"></a><strong>Cookie 安全</strong></h2><p>黑客常常會利用 <code>Cookie</code> 進行攻擊，比如 <code>XSS</code> 和 <code>CSRF</code> 等；所以爲了網站安全，通常需要針對 <code>Cookie</code> 做一些安全措施：</p>
+<ul>
+<li>對特殊的 <code>Cookie</code> 設置 <code>HttpOnly</code>，防止被客戶端腳本讀取，比如維持登入狀態的 <code>Cookie</code>。</li>
+<li>用於敏感信息（例如指示身份驗證）的 <code>Cookie</code> 的 <code>Expires/Max-Age</code> 應設置較短，並且 <code>SameSite</code> 屬性設置爲<code>Strict</code> 或 <code>Lax</code>。</li>
+</ul>
+<h2 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a><strong>Web Storage</strong></h2><p><code>Web Storage</code> 存在的目的就是爲了解決每次向伺服器請求的時候都需要攜帶 <code>Cookie</code> 信息的問題。<code>Web Storage</code> 包含了 2 個對象：<code>Session Storage</code> 和 <code>Local Storage</code>。通過這 2 個對象實現了：</p>
+<ul>
+<li>可以保存大於 <code>4KB</code> 的資料。</li>
+<li>提供 <code>Cookie</code> 以外方式保存會話資料。</li>
+<li>提供 <code>Cookie</code> 以外方式保存持久化資料。</li>
+</ul>
+<h2 id="Web-Storage-的限制"><a href="#Web-Storage-的限制" class="headerlink" title="Web Storage 的限制"></a><strong>Web Storage 的限制</strong></h2><p>和其他客戶端存儲方案一樣，<code>Web Storage</code> 也有限制。</p>
+<ul>
+<li>存儲大小：不同瀏覽器給 <code>Session Storage</code> 和 <code>Local Storage</code> 設置了不同的空間限制，但大多數會限制爲每個 <code>origin</code> 可以保存 <code>5MB</code>。</li>
+<li>存儲類型：只能存儲字符串，所以如果資料是對象結構的，需要通過 <code>JSON.stringify</code> 先轉成字符串；</li>
+<li>存儲限制於同一個 <code>origin</code>，這也是 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://developer.mozilla.org/zh-TW/docs/Web/Security/Same-origin_policy">Same-origin policy</a> 的限制之一。即 <code>http://a.com</code> 和 <code>https://a.com</code> 存儲的 Web Storage` 資料是不相同的。</li>
+</ul>
+<p><code>Web Storage</code> 提供了一套詳細的 <code>API</code> 使得我們可以很好的進行資料存儲：</p>
+<h2 id="Web-Storage-API"><a href="#Web-Storage-API" class="headerlink" title="Web Storage API"></a><strong>Web Storage API</strong></h2><ul>
+<li><code>Storage.getItem()</code>：該方法接受一個<code>key</code>作爲參數，返回<code>key</code>對應的值；</li>
+<li><code>Storage.setItem()</code>：該方法接受一個<code>key</code>和值作爲參數，將會把鍵值對添加到存儲中，如果<code>key</code>存在，則更新其對應的值；</li>
+<li><code>Storage.removeItem()</code>：該方法接受一個<code>key</code>作爲參數，並把該<code>key</code>從存儲中刪除；</li>
+<li><code>Storage.clear()</code>：調用該方法會清空存儲中的所有<code>key</code>。</li>
+</ul>
+<p><code>Session Storage</code> 和 <code>Local Storage</code> 都是 <code>Storage</code> 的實例，所以自然而然的它們都擁有上面的屬性和方法。</p>
+<h2 id="Session-Storage"><a href="#Session-Storage" class="headerlink" title="Session Storage"></a><strong>Session Storage</strong></h2><p><code>Session Storage</code> 對象只會存儲會話資料，這意味着當瀏覽器 tab 頁被關閉的時候，對應的 <code>Session Storage</code> 資料將被清除。除此之外，它還有如下表現：</p>
+<ul>
+<li>不受頁面刷新（包括強制刷新）影響，並且可以在瀏覽器崩潰並重啓後恢復；</li>
+<li>在當前頁面通過新 tab 或 window 打開一個新頁面的時候，新頁面會複製父級頁面的 <code>Session Storage</code> 資料；</li>
+<li>使用同一個 <code>URL</code> 打開多個 tab，它們各自的 <code>Session Storage</code> 資料不同；</li>
+</ul>
+<h2 id="Local-Storage"><a href="#Local-Storage" class="headerlink" title="Local Storage"></a><strong>Local Storage</strong></h2><p>與 <code>Session Storage</code> 不同，<code>Local Storage</code> 資料不會因為 <code>session</code> 退出而消失，它會一直保留在瀏覽器中，直到手動刪除或清除瀏覽器緩存。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>什麼是 Cookie？Web Storage 又是什麼？</p><p><a href="http://blog.shineve.dev/cookie-and-browser-storage/">http://blog.shineve.dev/cookie-and-browser-storage/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>shineve</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>11-11-2021</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener external nofollow noreferrer" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener external nofollow noreferrer" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener external nofollow noreferrer" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript/">JavaScript</a><a class="link-muted mr-2" rel="tag" href="/tags/Browser/">Browser</a></div><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6182cf845a68f680" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/random-and-pseudo-random/"><span class="level-item">「偽隨機」和「真隨機」的應用</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.jpg" alt="shineve"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shineve</p><p class="is-size-6 is-block">Front-End Engineer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Malaysian in Taiwan</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener external nofollow noreferrer" title="Github" href="https://github.com/shineve"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener external nofollow noreferrer" title="LinkedIn" href="https://www.linkedin.com/in/hao-ting-88802416b/"><i class="fab fa-linkedin"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Front-End/"><span class="level-start"><span class="level-item">Front-End</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/Project-Management/"><span class="level-start"><span class="level-item">Project Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/04/"><span class="level-start"><span class="level-item">四月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/03/"><span class="level-start"><span class="level-item">三月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">十二月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Browser/"><span class="tag">Browser</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS-Postprocessor/"><span class="tag">CSS Postprocessor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS-Preprocessor/"><span class="tag">CSS Preprocessor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GitHub/"><span class="tag">GitHub</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML/"><span class="tag">HTML</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jira/"><span class="tag">Jira</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostCSS/"><span class="tag">PostCSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Product-Design/"><span class="tag">Product Design</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sass/"><span class="tag">Sass</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vue/"><span class="tag">Vue</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web-Development/"><span class="tag">Web Development</span><span class="tag">3</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-11T14:13:28.000Z">11-11-2021</time></p><p class="title"><a href="/cookie-and-browser-storage/">什麼是 Cookie？Web Storage 又是什麼？</a></p><p class="categories"><a href="/categories/Front-End/">Front-End</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-16T16:00:00.000Z">17-10-2021</time></p><p class="title"><a href="/random-and-pseudo-random/">「偽隨機」和「真隨機」的應用</a></p><p class="categories"><a href="/categories/Front-End/">Front-End</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-03T16:00:00.000Z">04-10-2021</time></p><p class="title"><a href="/how-vue-css-scoped-works/">How Vue Scoped CSS Works?</a></p><p class="categories"><a href="/categories/Front-End/">Front-End</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-02T16:00:00.000Z">03-10-2021</time></p><p class="title"><a href="/css-postprocessor/">CSS Postprocessor (PostCSS)</a></p><p class="categories"><a href="/categories/Front-End/">Front-End</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-02T16:00:00.000Z">03-10-2021</time></p><p class="title"><a href="/css-preprocessor/">CSS Preprocessor</a></p><p class="categories"><a href="/categories/Front-End/">Front-End</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="shineve&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 shineve</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener external nofollow noreferrer">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener external nofollow noreferrer">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener external nofollow noreferrer" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener external nofollow noreferrer" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-tw");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;" rel="external nofollow noreferrer"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;" rel="external nofollow noreferrer">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
